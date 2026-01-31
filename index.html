@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refrigeração Expert - Assistência Técnica 24h</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .rounded-custom { border-radius: 2.5rem; }
+        .gradient-text { background: linear-gradient(to right, #38bdf8, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        section { display: none; }
+        section.active { display: block; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <script>
+        // Definindo a variável no escopo global antes de qualquer carregamento de elemento
+        var submitted = false;
+        
+        function handleIframeLoad() {
+            if (submitted) {
+                document.getElementById('form-success').classList.remove('hidden');
+                document.getElementById('contact-form').classList.add('hidden');
+                window.scrollTo({ top: document.getElementById('contato').offsetTop, behavior: 'smooth' });
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 glass border-b border-slate-100 shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
+                <div class="p-2.5 rounded-xl bg-gradient-to-br from-sky-500 to-cyan-600 shadow-lg shadow-sky-200">
+                    <i data-lucide="snowflake" class="text-white"></i>
+                </div>
+                <span class="font-900 text-2xl tracking-tighter uppercase font-black">REFRIGERAÇÃO EXPERT</span>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <button onclick="showPage('home')" class="nav-link font-semibold text-sm uppercase tracking-wider text-slate-500 hover:text-sky-600">Home</button>
+                <button onclick="showPage('servicos')" class="nav-link font-semibold text-sm uppercase tracking-wider text-slate-500 hover:text-sky-600">Serviços</button>
+                <button onclick="showPage('sobre')" class="nav-link font-semibold text-sm uppercase tracking-wider text-slate-500 hover:text-sky-600">Sobre</button>
+                <button onclick="showPage('faq')" class="nav-link font-semibold text-sm uppercase tracking-wider text-slate-500 hover:text-sky-600">FAQ</button>
+                <button onclick="showPage('contato')" class="nav-link font-semibold text-sm uppercase tracking-wider text-slate-500 hover:text-sky-600">Contato</button>
+            </nav>
+
+            <div class="lg:hidden flex items-center gap-2">
+                <button onclick="toggleMenu()" class="p-2 text-slate-800">
+                    <i data-lucide="menu" id="menu-icon" size="32"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 py-6 px-6 flex flex-col gap-4 shadow-xl">
+            <button onclick="showPage('home')" class="text-left py-3 text-xl font-bold border-b border-slate-50">Home</button>
+            <button onclick="showPage('servicos')" class="text-left py-3 text-xl font-bold border-b border-slate-50">Serviços</button>
+            <button onclick="showPage('sobre')" class="text-left py-3 text-xl font-bold border-b border-slate-50">Sobre</button>
+            <button onclick="showPage('faq')" class="text-left py-3 text-xl font-bold border-b border-slate-50">FAQ</button>
+            <button onclick="showPage('contato')" class="text-left py-3 text-xl font-bold border-b border-slate-50">Contato</button>
+        </div>
+    </header>
+
+    <!-- PAGE: HOME -->
+    <section id="home" class="active">
+        <!-- Hero -->
+        <div class="bg-slate-950 text-white pt-20 pb-28 lg:pt-32 lg:pb-44 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            <div class="container mx-auto px-4 relative z-10 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-8">
+                    <i data-lucide="shield-check" size="14"></i> Especialista Certificado em São Paulo
+                </div>
+                <h1 class="text-4xl md:text-7xl font-black leading-[1.1] mb-8 max-w-4xl tracking-tighter">
+                    Sua Geladeira Parou? <br>
+                    <span class="gradient-text">Nós Resolvemos Hoje.</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-2xl leading-relaxed">
+                    Assistência técnica em domicílio com peças originais e garantia total.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+                    <a href="https://wa.me/5511999999999" class="bg-green-600 hover:bg-green-500 text-white px-8 py-5 rounded-2xl font-black flex items-center justify-center gap-3 transition-all shadow-2xl shadow-green-900/40">
+                        <i data-lucide="message-circle" size="24"></i> ORÇAMENTO WHATSAPP
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Services -->
+        <div class="py-24 bg-white">
+            <div class="container mx-auto px-4 text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4">Serviços Principais</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Atendimento rápido para todos os seus eletrodomésticos.</p>
+            </div>
+            <div class="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer group" onclick="showPage('servicos')">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all">
+                        <i data-lucide="snowflake" size="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Geladeiras</h3>
+                    <p class="text-slate-500 text-sm mb-6">Reparo de todas as marcas: Brastemp, Samsung, LG e mais.</p>
+                    <span class="text-sky-600 font-black text-xs uppercase flex items-center gap-2">Ver Mais <i data-lucide="chevron-right" size="16"></i></span>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer group" onclick="showPage('servicos')">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all">
+                        <i data-lucide="wind" size="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Ar-Condicionado</h3>
+                    <p class="text-slate-500 text-sm mb-6">Instalação e limpeza completa para o seu conforto.</p>
+                    <span class="text-sky-600 font-black text-xs uppercase flex items-center gap-2">Ver Mais <i data-lucide="chevron-right" size="16"></i></span>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer group" onclick="showPage('servicos')">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all">
+                        <i data-lucide="thermometer" size="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Freezers</h3>
+                    <p class="text-slate-500 text-sm mb-6">Manutenção preventiva e corretiva em freezers industriais.</p>
+                    <span class="text-sky-600 font-black text-xs uppercase flex items-center gap-2">Ver Mais <i data-lucide="chevron-right" size="16"></i></span>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all cursor-pointer group" onclick="showPage('servicos')">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all">
+                        <i data-lucide="wrench" size="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Manutenção</h3>
+                    <p class="text-slate-500 text-sm mb-6">Revisão completa para evitar gastos desnecessários.</p>
+                    <span class="text-sky-600 font-black text-xs uppercase flex items-center gap-2">Ver Mais <i data-lucide="chevron-right" size="16"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: SERVICOS -->
+    <section id="servicos">
+        <div class="py-24 container mx-auto px-4">
+            <h2 class="text-4xl font-black text-center mb-16">Nossos Serviços Detalhados</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-10 rounded-[40px] border shadow-sm">
+                    <h3 class="text-2xl font-bold mb-4">Conserto de Geladeira</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Atuamos no reparo de placas, troca de motor (compressor), carga de gás, troca de sensores e filtros. Trabalhamos com Frost Free e Side by Side.</p>
+                    <div class="flex gap-2 text-green-600 font-bold items-center"><i data-lucide="check-circle" size="18"></i> Peças Originais</div>
+                </div>
+                <div class="bg-white p-10 rounded-[40px] border shadow-sm">
+                    <h3 class="text-2xl font-bold mb-4">Ar-Condicionado</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Instalação de novas máquinas, higienização química para eliminar fungos e bactérias, e manutenção de gás R410a e R22.</p>
+                    <div class="flex gap-2 text-green-600 font-bold items-center"><i data-lucide="check-circle" size="18"></i> Higienização padrão hospitalar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: SOBRE -->
+    <section id="sobre">
+        <div class="py-24 container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white p-10 md:p-20 rounded-[56px] border border-slate-100 shadow-sm flex flex-col lg:flex-row gap-16 items-center">
+                <div class="w-56 h-56 bg-sky-50 rounded-[40px] flex items-center justify-center text-sky-600 shrink-0 transform -rotate-3">
+                   <i data-lucide="store" size="80"></i>
+                </div>
+                <div class="text-slate-600 space-y-6">
+                   <h3 class="text-3xl font-black text-slate-900 tracking-tight">Experiência e Honestidade</h3>
+                   <p class="text-lg leading-relaxed italic border-l-4 border-sky-500 pl-6">Há mais de 10 anos sendo a solução em refrigeração para milhares de famílias em São Paulo.</p>
+                   <p class="text-lg">Nosso objetivo não é apenas consertar, mas garantir que o seu equipamento tenha o melhor desempenho possível com o menor custo de energia.</p>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- PAGE: FAQ -->
+    <section id="faq">
+        <div class="py-24 container mx-auto px-4 max-w-4xl">
+            <h2 class="text-4xl font-black text-center mb-16">Dúvidas Frequentes</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-8 rounded-[32px] border border-slate-200">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-3"><i data-lucide="info" class="text-sky-500"></i> Atendem no mesmo dia?</h3>
+                    <p class="text-slate-600 pl-8">Sim, dependendo da região e horário de chamada, enviamos um técnico em poucas horas.</p>
+                </div>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-200">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-3"><i data-lucide="info" class="text-sky-500"></i> Qual a garantia do serviço?</h3>
+                    <p class="text-slate-600 pl-8">Todos os nossos reparos e peças têm garantia mínima de 90 dias com emissão de comprovante.</p>
+                </div>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-200">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-3"><i data-lucide="info" class="text-sky-500"></i> Cobram visita técnica?</h3>
+                    <p class="text-slate-600 pl-8">A visita técnica tem um valor simbólico para o deslocamento do profissional, que é abatido do valor total caso o orçamento seja aprovado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: CONTATO -->
+    <section id="contato">
+        <div class="py-24 container mx-auto px-4 max-w-6xl">
+            <h2 class="text-4xl font-black text-center mb-16">Solicite seu Orçamento</h2>
+            <div class="bg-white rounded-[64px] shadow-3xl overflow-hidden border border-slate-100 grid lg:grid-cols-5 min-h-[650px]">
+                <div class="lg:col-span-2 bg-slate-950 p-12 text-white flex flex-col justify-center">
+                    <h3 class="text-3xl font-black mb-10">Canais de Contato</h3>
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-6"><i data-lucide="phone" class="text-sky-400"></i> (11) 99999-9999</div>
+                        <div class="flex items-center gap-6"><i data-lucide="map-pin" class="text-sky-400"></i> Atendimento em Toda SP</div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 p-12 bg-white">
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleIframeLoad()">></iframe>
+                    <div id="form-success" class="hidden text-center py-20">
+                        <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="check" size="40"></i></div>
+                        <h3 class="text-2xl font-bold">Enviado com Sucesso!</h3>
+                        <p class="text-slate-500">Aguarde nosso contato em breve.</p>
+                    </div>
+                    <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLScPsD1CXhtCh__dv4cz1GJi-q-sZvhUdjNUV6x-UV7D5NKLug/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="space-y-8">
+                        <input required name="entry.866868946" placeholder="Seu Nome" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-sky-500 transition-all">
+                        <input required type="email" name="entry.1899751636" placeholder="Seu E-mail" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-sky-500 transition-all">
+                        <textarea required name="entry.399689799" placeholder="Qual o problema do seu equipamento?" class="w-full p-5 bg-slate-50 border border-slate-200 rounded-2xl h-40 outline-none focus:border-sky-500 transition-all resize-none"></textarea>
+                        <button type="submit" class="w-full py-6 bg-slate-900 text-white rounded-2xl font-black text-xl hover:bg-sky-600 transition-all">ENVIAR AGORA</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white pt-24 pb-32 lg:pb-16 text-center border-t border-white/5">
+        <div class="container mx-auto px-4">
+            <h2 class="font-black text-2xl uppercase mb-6">REFRIGERAÇÃO EXPERT</h2>
+            <p class="text-slate-400 mb-12">Consertos de geladeiras, freezers e ar-condicionado.</p>
+            <div class="flex justify-center gap-8 text-slate-500 text-sm mb-12">
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('servicos')">Serviços</button>
+                <button onclick="showPage('faq')">FAQ</button>
+            </div>
+            <p class="text-xs text-slate-700">&copy; 2024 - Todos os direitos reservados.</p>
+        </div>
+
+        <!-- Floating Mobile Buttons -->
+        <div class="lg:hidden fixed bottom-6 left-6 right-6 flex gap-3 z-50">
+            <a href="tel:5511999999999" class="flex-1 bg-slate-900 border border-white/10 text-white py-5 rounded-[24px] flex items-center justify-center gap-2 font-black uppercase text-xs tracking-widest shadow-2xl">
+                <i data-lucide="phone" size="18"></i> Ligar
+            </a>
+            <a href="https://wa.me/5511999999999" class="flex-1 bg-green-600 text-white py-5 rounded-[24px] flex items-center justify-center gap-2 font-black uppercase text-xs tracking-widest shadow-2xl">
+                <i data-lucide="message-circle" size="18"></i> WhatsApp
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+
+        // Função de Navegação Simples
+        function showPage(pageId) {
+            // Esconde todas as seções
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostra a seção desejada
+            document.getElementById(pageId).classList.add('active');
+            // Fecha menu mobile se estiver aberto
+            document.getElementById('mobile-menu').classList.add('hidden');
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Menu Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
